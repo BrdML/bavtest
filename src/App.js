@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Connexion from './pages/Connexion';
+import SignUp from './pages/SignUp';
+import LogIn from './pages/LogIn';
 import Home from './pages/Home';
 import Navbar from './components/NavBar'
 
@@ -13,7 +14,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route component={Home} path='/' exact />
-          <Route component={Connexion} path='/connexion' />
+          <Route component={LogIn} path='/connexion' />
+          <Route component={SignUp} path='/connexion' />
         </Switch>
       </BrowserRouter>
     </div>

@@ -3,19 +3,26 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
     return (
-        <header className="bg-green-600 height-20">
+        <header className="bg-green-500 height-20">
             <div className="container mx-auto flex justify-between">
                 <nav className="flex">
                     <NavLink to="/" exact
-                        activeClassName="text-white"
-                        className="inflex-flex items-center py-6 px-3 mr-4 text-orange-100 hover:text-orange-800 text-4xl font-bold">
+                        activeClassName="text-blue-300 bg-green-600"
+                        className="inflex-flex items-center py-6 px-3 rounded mr-4 text-orange-400 hover:text-red-400 text-4xl font-bold"
+                    >
                         Accueil
                     </NavLink>
-                    <NavLink to="/connexion"
-                        className="inline-flex items-center font-bold py-3 px-3 my-6 rounded text-orange-100 hover:text-orange-800"
-                        activeClassName="text-orange-300 bg-orange-700"
+                    <NavLink to="/inscription"
+                        className="inline-flex items-center font-bold py-3 px-3 my-6 rounded text-orange-300 hover:text-red-400"
+                        activeClassName="text-blue-300 bg-green-600"
                     >
-                        Connexion
+                        S'inscrire
+                    </NavLink>
+                    <NavLink to="/connexion"
+                        className="inline-flex items-center font-bold py-3 px-3 my-6 rounded text-orange-300 hover:text-red-400"
+                        activeClassName="text-blue-300 bg-green-600"
+                    >
+                        Se connecter
                     </NavLink>
                 </nav>
             </div>
