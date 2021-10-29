@@ -8,11 +8,11 @@ function connexion() {
             <div className="form mx-auto flex align-items-center">
                 <h3 className="form-title text-white py-8 font-bold">Connectez vous</h3>
                 <div className="form-group">
-                    <label htmlFor="email">Email: </label>
+                    <label className="text-white font-bold" htmlFor="email">Email: </label>
                     <input type="email" name="email" id="email" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Mot de passe: </label>
+                    <label className="text-white" htmlFor="password">Mot de passe: </label>
                     <input type="password" name="password" id="password" />
                 </div>
                 <Button variant="contained" color="secondary">Connexion</Button>
