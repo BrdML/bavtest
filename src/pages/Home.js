@@ -3,7 +3,7 @@ import image from '../medias/logo_couleur.png'
 
 function Accueil() {
     return (
-        <div className="h-screen flex items-center">
+        <div className="homecontent flex items-center">
             <img src={image} alt="homeImage" className="animation flex mx-auto" />
         </div>
     )

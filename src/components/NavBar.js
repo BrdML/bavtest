@@ -7,6 +7,7 @@ export default function NavBar() {
 
     const { currentUser, logout } = useAuth()
     const history = useHistory()
+    console.log(currentUser)
 
     return (
         <header className="bg-green-500 height-20">
@@ -19,6 +20,7 @@ export default function NavBar() {
                     >
                         Accueil
                     </NavLink>
+                    {/*utilisateur non connecter currentUser renvoi null et est convertie en false par l'opérateur ! et on n'affiche le liens*/}
                     {!currentUser && <NavLink
                         to="/inscription"
                         name="Inscription"

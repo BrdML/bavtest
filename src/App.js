@@ -19,7 +19,7 @@ function App(props) {
           <BrowserRouter>
             <Navbar />
             <Switch>
-              <ProtectedRoute component={Home} path='/' exact />
+              <Route component={Home} path='/' exact />
               <ProtectedRoute component={LogIn} path='/connexion' />
               <ProtectedRoute component={SignUp} path='/inscription' />
               <ProtectedRoute component={Profile} path='/profile' />

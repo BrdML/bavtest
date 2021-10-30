@@ -91,9 +91,9 @@ function SignUp() {
                 <Button
                     type="submit"
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                 >
-                    Connexion
+                    Inscription
                 </Button>
                 <div id="form-message" className="form-message mx-auto text-red-800"></div>
             </div>
