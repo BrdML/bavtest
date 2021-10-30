@@ -52,7 +52,7 @@ function Connexion() {
                 login(email, password)
                     .then((response) => {
                         console.log(response)
-                        history.push('/profile');
+                        history.push('/profile')
                     })
                     .catch((error) => {
                         console.log(error.message)

@@ -29,4 +29,6 @@ function App() {
   )
 }
 
+function ProtectedRoute
+
 export default App;
