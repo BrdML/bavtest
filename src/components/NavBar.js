@@ -1,10 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 export default function NavBar() {
 
-    const { logout } = useAuth()
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
 
     return (
         <header className="bg-green-500 height-20">
@@ -17,23 +19,23 @@ export default function NavBar() {
                     >
                         Accueil
                     </NavLink>
-                    <NavLink
+                    {!currentUser && <NavLink
                         to="/inscription"
                         name="Inscription"
                         className="inline-flex items-center font-bold py-3 px-3 my-6 rounded text-orange-300 hover:text-red-400"
                         activeClassName="text-blue-300 bg-green-600"
                     >
                         S'inscrire
-                    </NavLink>
-                    <NavLink
+                    </NavLink>}
+                    {!currentUser && <NavLink
                         to="/connexion"
                         name="Connexion"
                         className="inline-flex items-center font-bold py-3 px-3 my-6 rounded text-orange-300 hover:text-red-400"
                         activeClassName="text-blue-300 bg-green-600"
                     >
                         Se connecter
-                    </NavLink>
-                    <NavLink
+                    </NavLink>}
+                    {currentUser && <NavLink
                         to="/logout"
                         name="Logout"
                         className="inline-flex items-center font-bold py-3 px-3 my-6 rounded text-red-700 hover:text-red-400"
@@ -44,11 +46,12 @@ export default function NavBar() {
                             // Recupération de la fonction logout via useAuth dans AuthContext
                             // alert('logout user')
                             logout()
+                            history.push('/')
                         }}
 
                     >
                         Se déconnecter
-                    </NavLink>
+                    </NavLink>}
                 </nav>
             </div>
         </header>

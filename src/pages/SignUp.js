@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import '../styles/form2.css';
 import Button from '@material-ui/core/Button';
 import { useAuth } from '../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -10,7 +11,7 @@ function SignUp() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const history = useHistory()
     const { register } = useAuth()
 
     const faildMessage = (message) => {
@@ -53,7 +54,10 @@ function SignUp() {
                 }
                 successMessage("Vous ête Inscrit")
                 register(email, password)
-                    .then((response) => console.log(response))
+                    .then((response) => {
+                        console.log(response)
+                        history.push('/profile')
+                    })
                     .catch((error) => {
                         console.log(error.message)
                         faildMessage(error.message);
