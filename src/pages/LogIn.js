@@ -2,13 +2,14 @@ import { React, useState } from 'react';
 import '../styles/form.css';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 function Connexion() {
 
     const history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isSubmitting, setIsSubmitting] = useState(false)
+
     const { login } = useAuth()
 
     const faildMessage = (message) => {
@@ -26,28 +27,41 @@ function Connexion() {
         }, 1000);
     }
 
+    const successMessage = (message) => {
+        let formMess = document.querySelector('.form-message');
+
+        formMess.innerHTML = message;
+        formMess.style.opacity = '1';
+        setTimeout(() => {
+            formMess.style.opacity = '0';
+        }, 5000);
+        formMess.style.color = '#33ffa0';
+        formMess.style.animation = 'dongle 1s';
+    }
+
     return (
         <form
             className="form-content flex align-items-center"
             onSubmit={async e => {
                 e.preventDefault()
                 //login logic
-                // console.log(email, password)
                 if (!email || !password) {
                     faildMessage("Erreur");
                 }
-                setIsSubmitting(true)
-                successMessage("Vous ête Inscrit")
+                successMessage("Vous ête connecter")
                 login(email, password)
-                    .then((response) => console.log(response))
+                    .then((response) => {
+                        console.log(response)
+                        history.push('/profile');
+                    })
                     .catch((error) => {
                         console.log(error.message)
                         faildMessage(error.message);
-                    }).finally(() => setIsSubmitting(false));
+                    })
             }}
         >
             <div className="form2 mx-auto flex align-items-center">
-                <h3 className="form-title text-white py-8 font-bold">Inscrivez vous</h3>
+                <h3 className="form-title text-white py-8 font-bold">Connectez vous</h3>
                 <div className="form-group">
                     <label className="text-white font-bold" htmlFor="email">Email: </label>
                     <input
@@ -74,8 +88,6 @@ function Connexion() {
                     type="submit"
                     variant="contained"
                     color="primary"
-                    isLoading={isSubmitting}
-                    onClick={() => history.push('/profile')}
                 >
                     Connexion
                 </Button>

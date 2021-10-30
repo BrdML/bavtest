@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import '../styles/form2.css';
 import Button from '@material-ui/core/Button';
 import { useAuth } from '../contexts/AuthContext';
-import { useHistory } from 'react-router-dom';
 
 
 
@@ -11,8 +10,6 @@ function SignUp() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const history = useHistory()
-    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const { register } = useAuth()
 
@@ -54,17 +51,16 @@ function SignUp() {
                 if (!email || !password) {
                     faildMessage("Erreur");
                 }
-                setIsSubmitting(true)
                 successMessage("Vous ête Inscrit")
                 register(email, password)
                     .then((response) => console.log(response))
                     .catch((error) => {
                         console.log(error.message)
                         faildMessage(error.message);
-                    }).finally(() => setIsSubmitting(false));
+                    })
             }}
         >
-            <div className="form2 mx-auto flex align-items-center">
+            <div className="form mx-auto flex align-items-center">
                 <h3 className="form-title text-white py-8 font-bold">Inscrivez vous</h3>
                 <div className="form-group">
                     <label className="text-white font-bold" htmlFor="email">Email: </label>
@@ -92,8 +88,6 @@ function SignUp() {
                     type="submit"
                     variant="contained"
                     color="primary"
-                    isLoading={isSubmitting}
-                    onClick={() => history.push('/profile')}
                 >
                     Connexion
                 </Button>
